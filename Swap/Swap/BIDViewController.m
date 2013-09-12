@@ -92,16 +92,15 @@ interfaceOrientation duration:(NSTimeInterval)duration {
 }
 
 - (IBAction)buttonTapped:(id)sender {
-    NSString *message = nil;
-    if ([self.foos containsObject:sender])
-        message = @"Foo button pressed";
-    else
-        message = @"Bar button pressed";
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:message
-        message:nil
-        delegate:nil
-        cancelButtonTitle:@"Ok"
-        otherButtonTitles:nil];
-    [alert show];
+    if ([self.foos containsObject:sender]) {
+        for (UIButton *oneFoo in foos) {
+            oneFoo.hidden = YES;
+        }
+    }
+    else {
+        for (UIButton *oneBar in bars) {
+            oneBar.hidden = YES;
+        }
+    }
 }
 @end
